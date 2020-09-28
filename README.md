@@ -1,4 +1,4 @@
-#Veille framework ElectronJs :
+# Veille framework ElectronJs :
 
 
 
@@ -39,13 +39,13 @@ VCS, Node js,Git
 
 </ul>
 
-#installation : 
+# installation : 
 
-# Clonez le dépôt Quick Start
+ Clonez le dépôt Quick Start
 $ git clone https://github.com/electron/electron-quick-start
 
-# Allez dans le dépôt
+ Allez dans le dépôt
 $ cd electron-quick-start
 
-# Installez les dépendances et lancez l'app
+ Installez les dépendances et lancez l'app
 $ npm install && npm start
