@@ -1,4 +1,4 @@
-Veille framework ElectronJs :
+#Veille framework ElectronJs :
 
 
 
@@ -10,7 +10,7 @@ Les applications Electron sont développées en JavaScript en utilisant les mêm
 const electron = require('electron')
 
 
-# Qu'es qu’électron ?
+# électron c'est quoi  ?
 Electron est une librairie open source développé par GitHub pour créer des applications bureau multi-platform (mac Windows linux) développer avec des techno web HTML, CSS et JavaScript. Electron se base sur le natigateur libre Chromium et sur NodeJS.<br>
 
 Exemple de logiciel de bureau : VSC Twitch sont développer avec électron<br>
