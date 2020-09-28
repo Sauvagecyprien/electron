@@ -1,45 +1,51 @@
-# electron-quick-start
+Veille framework ElectronJs :
 
-**Clone and run for a quick way to see Electron in action.**
 
-This is a minimal Electron application based on the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) within the Electron documentation.
 
-**Use this app along with the [Electron API Demos](https://electronjs.org/#get-started) app for API code examples to help you get started.**
+En terme de développement, une application Electron est par essence une application Node.js. Le point de départ est un package.json qui est identique à celui d’un module de Node.js.
 
-A basic Electron application needs just these files:
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+Les applications Electron sont développées en JavaScript en utilisant les mêmes principes et méthodes que celles que l'on trouve dans le développement avec Node.js. Toutes les API et fonctionnalités que l'on trouve dans Electron sont accessibles par le module electron, qui peut être requis comme tout autre module Node.js :
 
-You can learn more about each of these components within the [Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start).
+const electron = require('electron')
 
-## To Use
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+# Qu'es qu’électron ?
+Electron est une librairie open source développé par GitHub pour créer des applications bureau multi-platform (mac Windows linux) développer avec des techno web HTML, CSS et JavaScript. Electron se base sur le natigateur libre Chromium et sur NodeJS.<br>
 
-```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
-npm install
-# Run the app
-npm start
-```
+Exemple de logiciel de bureau : VSC Twitch sont développer avec électron<br>
 
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
+Avantages :
+<ul>
+<li>installation rapide</li>
+<li>languages web (html, css, js)</li>
+<li>même fonctionnalité que le web</li>
+<li>fonctionnalité deja faites par la communauté </li>
+<li>framework js utilisable angular vue next</li>
 
-## Resources for Learning Electron
+</ul>
 
-- [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
-- [electronjs.org/community#boilerplates](https://electronjs.org/community#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
 
-## License
+Inconvénients : ?<br>
 
-[CC0 1.0 (Public Domain)](LICENSE.md)
+
+# technos pour utiliser électron
+
+VCS, Node js,Git
+
+# Sources :
+<ul>
+<li>docu electrons</li>
+
+</ul>
+
+#installation : 
+
+# Clonez le dépôt Quick Start
+$ git clone https://github.com/electron/electron-quick-start
+
+# Allez dans le dépôt
+$ cd electron-quick-start
+
+# Installez les dépendances et lancez l'app
+$ npm install && npm start
