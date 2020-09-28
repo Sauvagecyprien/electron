@@ -49,3 +49,163 @@ $ cd electron-quick-start
 
  Installez les dépendances et lancez l'app
 $ npm install && npm start
+
+
+##################################################
+
+
+
+<h1>user</h1>
+<table>
+    <thead>
+    <th>nom</th>
+    <th>type</th>
+    <th>description</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>entreprise</td>
+        <td>texte()</td>
+        <td>nom de l'entreprise</td>
+    </tr>
+    <tr>
+        <td>nom</td>
+        <td>texte(15)</td>
+        <td>nom de l'individu</td>
+    </tr>
+    <tr>
+        <td>prenom</td>
+        <td>texte(15)</td>
+        <td>prenom de l'individu</td>
+    </tr>
+    <tr>
+        <td>fonction</td>
+        <td>text(20)</td>
+        <td>fonction exercé</td>
+    </tr>
+    </tbody>
+</table>
+
+<h1>véhicules</h1>
+<table>
+    <thead>
+    <th>nom</th>
+    <th>type</th>
+    <th>description</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>marque</td>
+        <td>texte()</td>
+        <td>marque du vehicles</td>
+    </tr>
+    <tr>
+        <td>modele</td>
+        <td>texte(15)</td>
+        <td>Modèle du véhicules</td>
+    </tr>
+    <tr>
+        <td>puissance</td>
+        <td>integer</td>
+        <td>puissance de la voiture en ch</td>
+    </tr>
+    <tr>
+        <td>annee</td>
+        <td>date</td>
+        <td>année de la mise en circulation du véhicules</td>
+    </tr>
+    <tr>
+        <td>immatriculation</td>
+        <td>varchar</td>
+        <td>immatriculation du véhicules</td>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>integer</td>
+        <td>1= dispo 2= non dispo</td>
+    </tr>
+    </tbody>
+</table>
+
+<h1>suivi</h1>
+<table>
+    <thead>
+    <th>nom</th>
+    <th>type</th>
+    <th>description</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>user_id</td>
+        <td>interger</td>
+        <td>user id</td>
+    </tr>
+    <tr>
+        <td>vehicules_id</td>
+        <td>integer</td>
+        <td>id du vehicules</td>
+    </tr>
+    <tr>
+        <td>objet_deplacement</td>
+        <td>texte</td>
+        <td>choix :Client, Projet, Réunion </td>
+    </tr>
+    <tr>
+        <td>compteur_depart</td>
+        <td>integer</td>
+        <td>relevé de compteur au départ</td>
+    </tr>
+    <tr>
+        <td>compteur_arrive</td>
+        <td>integer</td>
+        <td>relevé de compteur au retour</td>
+    </tr>
+    <tr>
+        <td>kilometres_parcourus</td>
+        <td>integer</td>
+        <td>kilomètres parcourus</td>
+    </tr>
+    <tr>
+        <td>montant_indemnité</td>
+        <td>integer</td>
+        <td>montant des indemnités</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<h1>trajet</h1>
+<table>
+    <thead>
+    <th>nom</th>
+    <th>type</th>
+    <th>description</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>lieu_depart</td>
+        <td>texte()</td>
+        <td>lieu de depart </td>
+    </tr>
+    <tr>
+        <td>lieu_arrivee</td>
+        <td>texte()</td>
+        <td>lieu d'arrivée </td>
+    </tr>
+    <tr>
+        <td>temps estimé</td>
+        <td>texte()</td>
+        <td>le temps estimé pour réalisé le trajet </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
