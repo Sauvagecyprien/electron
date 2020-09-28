@@ -53,7 +53,7 @@ $ npm install && npm start
 
 ##################################################
 
-
+# dictionnaire de données au format .md 
 
 <h1>user</h1>
 <table>
@@ -82,6 +82,11 @@ $ npm install && npm start
         <td>fonction</td>
         <td>text(20)</td>
         <td>fonction exercé</td>
+    </tr>
+    <tr>
+        <td>klm-parcouru</td>
+        <td>integer</td>
+        <td>somme kilometre parcouru pour cette utilisateur</td>
     </tr>
     </tbody>
 </table>
@@ -124,6 +129,11 @@ $ npm install && npm start
         <td>integer</td>
         <td>1= dispo 2= non dispo</td>
     </tr>
+    <tr>
+        <td>kilometrage_total</td>
+        <td>integer</td>
+        <td>le kilometrage du véhicules apres derniere utilisations</td>
+    </tr>
     </tbody>
 </table>
 
@@ -144,11 +154,6 @@ $ npm install && npm start
         <td>vehicules_id</td>
         <td>integer</td>
         <td>id du vehicules</td>
-    </tr>
-    <tr>
-        <td>objet_deplacement</td>
-        <td>texte</td>
-        <td>choix :Client, Projet, Réunion </td>
     </tr>
     <tr>
         <td>compteur_depart</td>
@@ -193,15 +198,12 @@ $ npm install && npm start
         <td>lieu d'arrivée </td>
     </tr>
     <tr>
-        <td>temps estimé</td>
-        <td>texte()</td>
-        <td>le temps estimé pour réalisé le trajet </td>
+        <td>objet_deplacement</td>
+        <td>texte</td>
+        <td>choix :Client, Projet, Réunion </td>
     </tr>
     </tbody>
 </table>
-
-
-
 
 
 
