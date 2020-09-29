@@ -1,6 +1,19 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const { ipcMain } = require('electron')
+const sqlite3 = require('sqlite3')
+
+const database = new sqlite3.Database('./bdd.db', (err) => {
+  if (err) console.error('Database opening error: ', err);
+});
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+  const sql = arg;
+  database.all(sql, (err, rows) => {
+    event.reply('asynchronous-reply', (err && err.message) || rows);
+  });
+})
 
 function createWindow () {
   // Create the browser window.
@@ -8,13 +21,14 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true
     }
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
-
+  // mainWindow.loadFile('index.html')
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 }
@@ -24,7 +38,7 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
-  
+
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -41,3 +55,35 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+// const { app, BrowserWindow, ipcMain } = require("electron")
+// const path = require('path');
+// const url = require('url');
+//
+// var knex = require("knex")({
+//   client: "sqlite3",
+//   connection: {
+//     filename: path.join(__dirname, 'bdd.db')
+//   }
+// });
+//
+// app.on("ready", () => {
+//   let mainWindow = new BrowserWindow({ height: 800, width: 800, show: false })
+//   mainWindow.loadURL(url.format({
+//     pathname: path.join(__dirname, 'main.html'),
+//     protocol: 'file',
+//     slashes: true
+//   }));
+//   mainWindow.once("ready-to-show", () => { mainWindow.show() })
+//
+//   ipcMain.on("mainWindowLoaded", function () {
+//     let result = knex.select("FirstName").from("user")
+//     result.then(function(rows){
+//       mainWindow.webContents.send("resultSent", rows);
+//     })
+//   });
+// });
+//
+//
+//
+// app.on("window-all-closed", () => { app.quit() })
