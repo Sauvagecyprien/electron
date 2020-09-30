@@ -1,89 +1,46 @@
-// Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-const { ipcMain } = require('electron')
-const sqlite3 = require('sqlite3')
+ const electron = require('electron');
+const app = require('./app');
 
-const database = new sqlite3.Database('./bdd.db', (err) => {
-  if (err) console.error('Database opening error: ', err);
-});
+let window;
 
-ipcMain.on('asynchronous-message', (event, arg) => {
-  const sql = arg;
-  database.all(sql, (err, rows) => {
-    event.reply('asynchronous-reply', (err && err.message) || rows);
-  });
-})
+function createWindow() {
+    /* Créer une fenêtre de 800px par 600px sans bordures */
+    window = new electron.BrowserWindow({
+        width: 800,
+        height: 600,
+        frame: false
+    });
 
-function createWindow () {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true
-    }
-  })
+    /* Si vous décommentez cette ligne, vous verrez la console de débug Chrome */
+    /* window.webContents.openDevTools(); */
 
-  // and load the index.html of the app.
-  // mainWindow.loadFile('index.html')
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+    /* Display the homepage of the server */
+    window.loadURL('http://127.0.0.1:3000');
+
+    /* Lorsque la fenêtre est fermée, on l'indique au système */
+    window.on('closed', () => {
+        window = null;
+    });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
-  createWindow()
+/* On attend qu'Electron.js soit prêt pour créer la fenêtre */
+electron.app.on('ready', function () {
+    app.start(function () {
+        createWindow();
+    });
+});
 
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
+/* Cette fonction arrête totalement l'application
+   lorsque toutes les fenêtres sont fermées */
+electron.app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+        electron.app.quit();
+    }
+});
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
-})
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
-
-// const { app, BrowserWindow, ipcMain } = require("electron")
-// const path = require('path');
-// const url = require('url');
-//
-// var knex = require("knex")({
-//   client: "sqlite3",
-//   connection: {
-//     filename: path.join(__dirname, 'bdd.db')
-//   }
-// });
-//
-// app.on("ready", () => {
-//   let mainWindow = new BrowserWindow({ height: 800, width: 800, show: false })
-//   mainWindow.loadURL(url.format({
-//     pathname: path.join(__dirname, 'main.html'),
-//     protocol: 'file',
-//     slashes: true
-//   }));
-//   mainWindow.once("ready-to-show", () => { mainWindow.show() })
-//
-//   ipcMain.on("mainWindowLoaded", function () {
-//     let result = knex.select("FirstName").from("user")
-//     result.then(function(rows){
-//       mainWindow.webContents.send("resultSent", rows);
-//     })
-//   });
-// });
-//
-//
-//
-// app.on("window-all-closed", () => { app.quit() })
+/* Fonction utile pour MacOS */
+electron.app.on('activate', () => {
+    if (win === null) {
+        createWindow();
+    }
+});

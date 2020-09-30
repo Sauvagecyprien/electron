@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap-grid.css">
+    <link href="bootstrap-4.5.2-dist/js/bootstrap.js">
+    <link href="bootstrap-4.5.2-dist/js/bootstrap.bundle.js">
+    <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap-reboot.css">
+
+
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Accueil fiche kilomètrique!</title>
+  </head>
+  <body class="body">
+
+    <h1>electronJs</h1>
+    We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>.
+    <div class="column">
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <p id="result"></p>
+    <script>
+      $(document).ready(function(){
+        $(".close").on("click", function(){
+          alert("The paragraph was clicked.");
+        });
+      });
+    </script>
+    <script src="./renderer.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
