@@ -61,12 +61,23 @@ function init(callback) {
 function loadRoutes(callback) {
     expressApp.get('/', function (req, res) {
         res.render('homepage/index', { layout: 'layout-base.ejs' });
+
     });
- 
+
+    expressApp.get('/register', function (req, res) {
+        res.render('homepage/register', { layout: 'layout-base.ejs' });
+    });
+
+    expressApp.get('/login', function (req, res) {
+        res.render('homepage/login', { layout: 'layout-base.ejs' });
+    });
+
+
     if (typeof callback != 'undefined') {
         callback();
     }
 }
+
  
 module.exports = {
     start: start
