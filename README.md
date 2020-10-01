@@ -7,6 +7,20 @@ Le liens pour faire le debut de l'application : https://www.ie-concept.fr/utilis
 si vous voulez coder sur le localhost:3000 alors dans le package.json mettre dans script "start": "node ./main-without-electron.js" sinon "start": "electron ."
 
 
+#  installation de la bdd : 
+
+url utile : https://sequelize.org/master/manual/migrations.html
+
+$ npm install
+$ npx sequelize-cli db:migrate
+$ npx sequelize-cli db:seed:all 
+
+
+
+
+
+
+
 # Veille framework ElectronJs :
 
 En terme de développement, une application Electron est par essence une application Node.js. Le point de départ est un package.json qui est identique à celui d’un module de Node.js.
