@@ -11,9 +11,9 @@ si vous voulez coder sur le localhost:3000 alors dans le package.json mettre dan
 
 url utile : https://sequelize.org/master/manual/migrations.html
 
-$ npm install
-$ npx sequelize-cli db:migrate
-$ npx sequelize-cli db:seed:all 
+$ npm install <br/>
+$ npx sequelize-cli db:migrate<br/>
+$ npx sequelize-cli db:seed:all <br/>
 
 
 
