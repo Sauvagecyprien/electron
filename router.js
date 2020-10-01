@@ -4,7 +4,9 @@ const expressApp = express();
 const http = require('http').Server(expressApp);
  
 const path = require('path');
- 
+const sqlite3 = require("sqlite3").verbose();
+
+
 /* Ajout de express-ejs-layouts */
 const ejsLayout = require('express-ejs-layouts');
  
@@ -57,13 +59,14 @@ function init(callback) {
 }
  
 /* ROUTES */
- 
+var usercontroller = require('./controllers/usercontroller');
+const bodyParser = require('body-parser');
+expressApp.use(bodyParser.urlencoded({ extended: false }));
+
 function loadRoutes(callback) {
-    expressApp.get('/', function (req, res) {
-        res.render('homepage/index', { layout: 'layout-base.ejs' });
 
-    });
-
+    expressApp.get('/', usercontroller.list);
+    expressApp.post('/createaccount', usercontroller.create);
     expressApp.get('/register', function (req, res) {
         res.render('homepage/register', { layout: 'layout-base.ejs' });
     });
@@ -71,6 +74,7 @@ function loadRoutes(callback) {
     expressApp.get('/login', function (req, res) {
         res.render('homepage/login', { layout: 'layout-base.ejs' });
     });
+
 
 
     if (typeof callback != 'undefined') {
