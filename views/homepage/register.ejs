@@ -17,7 +17,7 @@
 </nav>
 <div class="container  p-5">
 
-    <h1 class="text-center">S'incrire</h1>
+    <h1 class="text-center">Creation d'un individu </h1>
     <br/>
     <div class="card">
 
@@ -25,11 +25,19 @@
             <form action="/createaccount" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">Nom</label>
-            <input type="text" class="form-control" name="nom" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" class="form-control" name="nom" id="exampleInputEmail1" >
           </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="exampleInputEmail1" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">entreprise</label>
+                    <input type="text" class="form-control" name="entreprise" id="exampleInputEmail1" >
+                </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Adresse email</label>
-            <input type="email" class="form-control" name="prenom" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Mot de passe</label>
@@ -50,186 +58,186 @@
 </div>
 
 
-<script>
-    var myInput = document.getElementById("password");
-    var myInput2 = document.getElementById("password-confirm");
-    var letter = 0;
-    var capital = 0 ;
-    var number = 0;
-    var length = 0;
-    var $mdp = $('#password'), $confirmation = $('#password-confirm'),$buttons = $('#buttons');
-    const pass = document.getElementById('password');
-    const passre = document.getElementById('password-confirm');
+<!--<script>-->
+<!--    var myInput = document.getElementById("password");-->
+<!--    var myInput2 = document.getElementById("password-confirm");-->
+<!--    var letter = 0;-->
+<!--    var capital = 0 ;-->
+<!--    var number = 0;-->
+<!--    var length = 0;-->
+<!--    var $mdp = $('#password'), $confirmation = $('#password-confirm'),$buttons = $('#buttons');-->
+<!--    const pass = document.getElementById('password');-->
+<!--    const passre = document.getElementById('password-confirm');-->
 
-    function condition() {
-        if($("#customCheckRegister").prop("checked") == false){
-            $("#buttons").attr("disabled", true);
-        }else if ($mdp.val() != $confirmation.val()) {
-            $("#buttons").attr("disabled", true);
-        }else if ($confirmation.val() != $mdp.val()){
-            $("#buttons").attr("disabled", true);
-        }
-        else if ($mdp.val().length <= 5){
-            $("#buttons").attr("disabled", true);
-        }
-        else if($("#customCheckRegister").prop("checked") == true && $mdp.val() == $confirmation.val() && $mdp.val().length >= 6) {
-            $("#buttons").attr("disabled", false);
-        }
-    }
+<!--    function condition() {-->
+<!--        if($("#customCheckRegister").prop("checked") == false){-->
+<!--            $("#buttons").attr("disabled", true);-->
+<!--        }else if ($mdp.val() != $confirmation.val()) {-->
+<!--            $("#buttons").attr("disabled", true);-->
+<!--        }else if ($confirmation.val() != $mdp.val()){-->
+<!--            $("#buttons").attr("disabled", true);-->
+<!--        }-->
+<!--        else if ($mdp.val().length <= 5){-->
+<!--            $("#buttons").attr("disabled", true);-->
+<!--        }-->
+<!--        else if($("#customCheckRegister").prop("checked") == true && $mdp.val() == $confirmation.val() && $mdp.val().length >= 6) {-->
+<!--            $("#buttons").attr("disabled", false);-->
+<!--        }-->
+<!--    }-->
 
-    $(document).ready(function () {
-        $('#customCheckRegister').on('click',function () {
+<!--    $(document).ready(function () {-->
+<!--        $('#customCheckRegister').on('click',function () {-->
 
-            condition();
+<!--            condition();-->
 
-        })
-        // if($('#customCheckRegister').prop('checked')) {
-        //     $("#buttons").removeClass( "btn-primary" ).addClass( "btn-danger" );
-        //
-        // } else {
-        //     $("#buttons").removeClass( "btn-primary" ).addClass( "btn-warning" );
-    })
-
-
-    // When the user starts to type something inside the password field
-    myInput.onkeyup = function() {
-        // Validate lowercase letters
-        var lowerCaseLetters = /[a-z]/g;
-        if(myInput.value.match(lowerCaseLetters)) {
-            letter = 1;
-
-        } else {
-            letter = 0;
-
-        }
-
-        // Validate capital letters
-        var upperCaseLetters = /[A-Z]/g;
-        if(myInput.value.match(upperCaseLetters)) {
-            capital = 1;
-
-        } else {
-            capital = 0;
-
-        }
-
-        // Validate numbers
-        var numbers = /[0-9]/g;
-        if(myInput.value.match(numbers)) {
-            number = 1;
-        } else {
-            number = 0;
-
-        }
-
-        // Validate length
-        if(myInput.value.length >= 8) {
-            length = 1;
-        } else {
-            length = 0;
-
-        }
-        solid();
-
-    }
+<!--        })-->
+<!--        // if($('#customCheckRegister').prop('checked')) {-->
+<!--        //     $("#buttons").removeClass( "btn-primary" ).addClass( "btn-danger" );-->
+<!--        //-->
+<!--        // } else {-->
+<!--        //     $("#buttons").removeClass( "btn-primary" ).addClass( "btn-warning" );-->
+<!--    })-->
 
 
+<!--    // When the user starts to type something inside the password field-->
+<!--    myInput.onkeyup = function() {-->
+<!--        // Validate lowercase letters-->
+<!--        var lowerCaseLetters = /[a-z]/g;-->
+<!--        if(myInput.value.match(lowerCaseLetters)) {-->
+<!--            letter = 1;-->
 
-    // fonction qui check si c'est solide
-    function solid() {
-        var somme = letter + number + capital + length
-        if (somme <= 1){
-            $('#span').html('<small>Robustesse du mot de passe : <span class="text-danger font-weight-700">faible</span></small>'); // remplace le code HTML actuel par celui-ci
-        }else if (somme == 2){
-            $('#span').html('<small>Robustesse du mot de passe : <span class="text-warning font-weight-700">moyen</span></small>');
-        }else if (somme == 3){
-            $('#span').html('<small>Robustesse du mot de passe : <span class="text-primary font-weight-700">solide</span></small>');
-        }else if (somme == 4){
-            $('#span').html('<small>Robustesse du mot de passe : <span class="text-success font-weight-700">très solide</span></small>');
-        }
-    }
+<!--        } else {-->
+<!--            letter = 0;-->
 
-    test = function(){
-        if ($mdp.val() == '') {
-            $("#formgroup").removeClass( "has-danger" ).removeClass( "has-success" );// si la confirmation est différente du mot de passe
-            $("#formgroup1").removeClass( "has-success" ).removeClass( "has-danger" );
-            $("#password-confirm").removeClass( "is-valid" ).removeClass( "is-invalid" );
-            $("#password").removeClass( "is-valid" ).removeClass( "is-invalid" );
-        }else if ($confirmation.val() == '') {
-            $("#formgroup").removeClass( "has-danger" ).removeClass( "has-success" );// si la confirmation est différente du mot de passe
-            $("#formgroup1").removeClass( "has-success" ).removeClass( "has-danger" );
-            $("#password-confirm").removeClass( "is-valid" ).removeClass( "is-invalid" );
-            $("#password").removeClass( "is-valid" ).removeClass( "is-invalid" );
-        }else{
-            $("#formgroup").removeClass( "has-success" ).addClass( "has-danger" );// si la confirmation est différente du mot de passe
-            $("#formgroup1").removeClass( "has-success" ).addClass( "has-danger" );
-            $("#password-confirm").removeClass( "is-valid" ).addClass( "is-invalid" );
-            $("#password").removeClass( "is-valid" ).addClass( "is-invalid" );
-            condition();
-        }}
+<!--        }-->
 
+<!--        // Validate capital letters-->
+<!--        var upperCaseLetters = /[A-Z]/g;-->
+<!--        if(myInput.value.match(upperCaseLetters)) {-->
+<!--            capital = 1;-->
 
-    $(document).ready(function() {
-        $confirmation.keyup(function () {
-            if ($mdp.val().length <= 5) {
-                test();
+<!--        } else {-->
+<!--            capital = 0;-->
 
+<!--        }-->
 
-            } else if ($(this).val() == '') {
-                test();
+<!--        // Validate numbers-->
+<!--        var numbers = /[0-9]/g;-->
+<!--        if(myInput.value.match(numbers)) {-->
+<!--            number = 1;-->
+<!--        } else {-->
+<!--            number = 0;-->
+
+<!--        }-->
+
+<!--        // Validate length-->
+<!--        if(myInput.value.length >= 8) {-->
+<!--            length = 1;-->
+<!--        } else {-->
+<!--            length = 0;-->
+
+<!--        }-->
+<!--        solid();-->
+
+<!--    }-->
 
 
-            }else if ($(this).val() != $mdp.val()){
-                test();
+
+<!--    // fonction qui check si c'est solide-->
+<!--    function solid() {-->
+<!--        var somme = letter + number + capital + length-->
+<!--        if (somme <= 1){-->
+<!--            $('#span').html('<small>Robustesse du mot de passe : <span class="text-danger font-weight-700">faible</span></small>'); // remplace le code HTML actuel par celui-ci-->
+<!--        }else if (somme == 2){-->
+<!--            $('#span').html('<small>Robustesse du mot de passe : <span class="text-warning font-weight-700">moyen</span></small>');-->
+<!--        }else if (somme == 3){-->
+<!--            $('#span').html('<small>Robustesse du mot de passe : <span class="text-primary font-weight-700">solide</span></small>');-->
+<!--        }else if (somme == 4){-->
+<!--            $('#span').html('<small>Robustesse du mot de passe : <span class="text-success font-weight-700">très solide</span></small>');-->
+<!--        }-->
+<!--    }-->
+
+<!--    test = function(){-->
+<!--        if ($mdp.val() == '') {-->
+<!--            $("#formgroup").removeClass( "has-danger" ).removeClass( "has-success" );// si la confirmation est différente du mot de passe-->
+<!--            $("#formgroup1").removeClass( "has-success" ).removeClass( "has-danger" );-->
+<!--            $("#password-confirm").removeClass( "is-valid" ).removeClass( "is-invalid" );-->
+<!--            $("#password").removeClass( "is-valid" ).removeClass( "is-invalid" );-->
+<!--        }else if ($confirmation.val() == '') {-->
+<!--            $("#formgroup").removeClass( "has-danger" ).removeClass( "has-success" );// si la confirmation est différente du mot de passe-->
+<!--            $("#formgroup1").removeClass( "has-success" ).removeClass( "has-danger" );-->
+<!--            $("#password-confirm").removeClass( "is-valid" ).removeClass( "is-invalid" );-->
+<!--            $("#password").removeClass( "is-valid" ).removeClass( "is-invalid" );-->
+<!--        }else{-->
+<!--            $("#formgroup").removeClass( "has-success" ).addClass( "has-danger" );// si la confirmation est différente du mot de passe-->
+<!--            $("#formgroup1").removeClass( "has-success" ).addClass( "has-danger" );-->
+<!--            $("#password-confirm").removeClass( "is-valid" ).addClass( "is-invalid" );-->
+<!--            $("#password").removeClass( "is-valid" ).addClass( "is-invalid" );-->
+<!--            condition();-->
+<!--        }}-->
 
 
-            }else if ($mdp.val() != $(this).val() ){
-                test();
+<!--    $(document).ready(function() {-->
+<!--        $confirmation.keyup(function () {-->
+<!--            if ($mdp.val().length <= 5) {-->
+<!--                test();-->
 
 
-            } else if ($(this).val() ==$mdp.val() && $(this).val().length <= 5 ) {
-                test();
+<!--            } else if ($(this).val() == '') {-->
+<!--                test();-->
 
 
-            }else{
-                $("#formgroup").removeClass( "has-danger" ).addClass( "has-success" );// si la confirmation est différente du mot de passe
-                $("#formgroup1").removeClass( "has-danger" ).addClass( "has-success" );
-                $("#password-confirm").removeClass( "is-invalid" ).addClass( "is-valid" );
-                $("#password").removeClass( "is-invalid" ).addClass( "is-valid" );
-                condition();
-
-            }
-        })})
-    $(document).ready(function() {
-        $mdp.keyup(function () {
-            if ($mdp.val().length <= 5) {
-                test();
+<!--            }else if ($(this).val() != $mdp.val()){-->
+<!--                test();-->
 
 
-            } else if ($(this).val() == '') {
-                test();
+<!--            }else if ($mdp.val() != $(this).val() ){-->
+<!--                test();-->
 
 
-            }else if ($(this).val() != $confirmation.val()){
-                test();
+<!--            } else if ($(this).val() ==$mdp.val() && $(this).val().length <= 5 ) {-->
+<!--                test();-->
 
 
-            }else if ($mdp.val() != $confirmation.val() ){
-                test();
+<!--            }else{-->
+<!--                $("#formgroup").removeClass( "has-danger" ).addClass( "has-success" );// si la confirmation est différente du mot de passe-->
+<!--                $("#formgroup1").removeClass( "has-danger" ).addClass( "has-success" );-->
+<!--                $("#password-confirm").removeClass( "is-invalid" ).addClass( "is-valid" );-->
+<!--                $("#password").removeClass( "is-invalid" ).addClass( "is-valid" );-->
+<!--                condition();-->
+
+<!--            }-->
+<!--        })})-->
+<!--    $(document).ready(function() {-->
+<!--        $mdp.keyup(function () {-->
+<!--            if ($mdp.val().length <= 5) {-->
+<!--                test();-->
 
 
-            } else if ($(this).val() == $mdp.val() && $(this).val().length <= 5 ) {
-                test();
+<!--            } else if ($(this).val() == '') {-->
+<!--                test();-->
 
 
-            }else{
-                $("#formgroup").removeClass( "has-danger" ).addClass( "has-success" );// si la confirmation est différente du mot de passe
-                $("#formgroup1").removeClass( "has-danger" ).addClass( "has-success" );
-                $("#password-confirm").removeClass( "is-invalid" ).addClass( "is-valid" );
-                $("#password").removeClass( "is-invalid" ).addClass( "is-valid" );
-                condition();
+<!--            }else if ($(this).val() != $confirmation.val()){-->
+<!--                test();-->
 
-            }
-        })})
 
-</script>
+<!--            }else if ($mdp.val() != $confirmation.val() ){-->
+<!--                test();-->
+
+
+<!--            } else if ($(this).val() == $mdp.val() && $(this).val().length <= 5 ) {-->
+<!--                test();-->
+
+
+<!--            }else{-->
+<!--                $("#formgroup").removeClass( "has-danger" ).addClass( "has-success" );// si la confirmation est différente du mot de passe-->
+<!--                $("#formgroup1").removeClass( "has-danger" ).addClass( "has-success" );-->
+<!--                $("#password-confirm").removeClass( "is-invalid" ).addClass( "is-valid" );-->
+<!--                $("#password").removeClass( "is-invalid" ).addClass( "is-valid" );-->
+<!--                condition();-->
+
+<!--            }-->
+<!--        })})-->
+
+<!--</script>-->

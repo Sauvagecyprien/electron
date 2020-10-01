@@ -11,7 +11,7 @@
             <a class="nav-link" href="/login">Se connecter</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/register">S'incrire </a>
+            <a class="nav-link" href="/register">Creer individu </a>
         </li>
     </ul>
 </nav>
@@ -24,11 +24,7 @@
 
         <div class="card-body">
             <ul class="nav justify-content-center">
-<!--                <script>-->
-<!--                for (let test = 0; test < 5; test++) {-->
-<!--                    document.write('<li><% test %> </li>');-->
-<!--                }-->
-<!--                </script>-->
+
 
 
                 <li class="nav-item">
@@ -55,6 +51,7 @@
                         <td><%= test[i].prenom %></td>
                         <td><%= test[i].entreprise %></td>
                         <td><%= test[i].email %></td>
+                        <td><form action="/delete/<%= test[i].id %>" method="post"><button type="submit" class="btn btn-dark btn-block">supprimer</button></form></td>
                 </tr>
                     <% } %>
 

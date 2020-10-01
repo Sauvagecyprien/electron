@@ -67,6 +67,9 @@ function loadRoutes(callback) {
 
     expressApp.get('/', usercontroller.list);
     expressApp.post('/createaccount', usercontroller.create);
+    expressApp.post('/delete/:id', usercontroller.delete);
+
+
     expressApp.get('/register', function (req, res) {
         res.render('homepage/register', { layout: 'layout-base.ejs' });
     });
