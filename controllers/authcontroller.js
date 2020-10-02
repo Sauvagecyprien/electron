@@ -52,7 +52,7 @@ exports.register = async (req, res, next) => {
         role } = req.body;
 
     try {
-        if (role == 'administrator' || role == 'guest') {
+        if (role == 'admin' || role == 'user') {
             const hashedPwd = await bcrypt.hash(password, 12);
 
             const newPerson = new Persons({

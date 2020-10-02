@@ -3,23 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="64cdcee5-e5e8-4169-996d-529b08121960" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/usercontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/usercontroller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/authcontroller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/authcontroller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/database.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/20200930065748-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/20200930065748-create-user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/entreprise.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/entreprise.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/fiche.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/fiche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/trajet.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/trajet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/vehicule.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/vehicule.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeders/20200930070345-demo-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeders/20200930070345-demo-user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/homepage/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/homepage/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/homepage/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/homepage/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/homepage/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/homepage/register.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layout-base.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout-base.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +73,7 @@
       <workItem from="1601360379915" duration="11756000" />
       <workItem from="1601439642178" duration="20780000" />
       <workItem from="1601525739786" duration="25992000" />
-      <workItem from="1601611582911" duration="9634000" />
+      <workItem from="1601611582911" duration="16503000" />
     </task>
     <servers />
   </component>
@@ -139,6 +128,12 @@
           <url>file://$PROJECT_DIR$/seeders/20200930070345-demo-user.js</url>
           <line>9</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controllers/authcontroller.js</url>
+          <line>29</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
