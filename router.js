@@ -144,7 +144,7 @@ function loadRoutes(callback) {
 expressApp.use(
     session({
         name: 'default',
-        secret: 'IdHmkkt7KJDJgbnlkejaosOUazV0JdaeasdLKLHdjKJKHEZ65486SFERTqeazae',
+        secret: 'blablacar',
         resave: false,
         saveUninitialized: false,
         cookie: {
