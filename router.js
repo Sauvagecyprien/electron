@@ -1,8 +1,22 @@
+
+const session     = require('express-session');
+// Get all models
+const Entreprise= require('./models/entreprise');
+const Fiche= require('./models/fiche');
+const Vehicle= require('./models/vehicule');
+const Trajet = require('./models/trajet');
+const User= require('./models/user');
+
+
+
 /* Appel de tous nos outils */
+
+
+
 const express = require('express');
 const expressApp = express();
 const http = require('http').Server(expressApp);
- 
+const flash       = require('connect-flash');
 const path = require('path');
 const sqlite3 = require("sqlite3").verbose();
 
@@ -14,6 +28,13 @@ const ejsLayout = require('express-ejs-layouts');
 const router = {
     isStarted: false
 };
+
+var ejs = require('ejs');
+ejs.open = '{{';
+ejs.close = '}}';
+
+
+
 
 function start(callback) {
     if (router.isStarted === false) {
@@ -74,7 +95,7 @@ expressApp.use(bodyParser.urlencoded({ extended: false }));
 
 function loadRoutes(callback) {
 
-    expressApp.get('/', usercontroller.list);
+    expressApp.get('/', isAuth, usercontroller.list);
 
     // expressApp.get('/', usercontroller.list);
     expressApp.get('/user', usercontroller.list);
@@ -93,7 +114,7 @@ function loadRoutes(callback) {
     expressApp.post('/deletetrajet/:id', trajetcontroller.delete);
     expressApp.post('/deleteentreprise/:id', entreprisecontroller.delete);
 
-
+    expressApp.post('/log', authcontroller.login);
 
     expressApp.get('/register', function (req, res) {
         res.render('homepage/register', { layout: 'layout-base.ejs' });
@@ -117,6 +138,37 @@ function loadRoutes(callback) {
         callback();
     }
 }
+
+
+/** middleware setup */
+expressApp.use(
+    session({
+        name: 'default',
+        secret: 'IdHmkkt7KJDJgbnlkejaosOUazV0JdaeasdLKLHdjKJKHEZ65486SFERTqeazae',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            sameSite: true,
+            maxAge: 3600 * 1000 * 3
+        }
+    })
+);
+
+expressApp.set('views', path.join(__dirname, 'views'));
+expressApp.set('view engine', 'ejs');
+expressApp.use(express.json());
+expressApp.use(express.urlencoded({ extended: false }));
+expressApp.use(express.static(path.join(__dirname, 'public')));
+
+expressApp.use(flash());
+
+expressApp.use((req, res, next) => {
+    res.locals.success_message = req.flash('success');
+    res.locals.error_message   = req.flash('error');
+    res.locals.username = req.session.name;
+    next();
+});
+
 
  
 module.exports = {
