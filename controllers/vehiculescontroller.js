@@ -1,6 +1,6 @@
 var models = require('../models');
 
-
+require('../electronSetup');
 
 exports.list = async function (req, res){
     const entites = await models.Vehicule.findAll();
@@ -29,7 +29,7 @@ exports.delete = async function (req, res){
 
 
 }
-exports.create = async function (req, res){
+exports.create = async function (req, res) {
 
     const {
         marques,
@@ -53,12 +53,64 @@ exports.create = async function (req, res){
             result: "error create vehicules "
         })
     }
-
-
-
-
-    // const entites = await models.User.create({nom: req.body.nom, prenom : req.body.prenom, entreprise : req.body.entreprise, email : req.body.email, password : req.body.password});
 }
+
+exports.update = async function (req, res){
+
+// Now this entry was removed from the database
+        try {
+            const id = req.params.id
+            const vehicules = await models.Vehicule.findByPk(id);
+            res.render('homepage/updatevehicules', { layout: 'layout-base.ejs', vehicules : vehicules });
+        } catch (error) {
+            req.flash('error', 'Une erreur est survenue');
+            return res.redirect('/user');
+        }
+
+
+    }
+
+
+    exports.up = async function (req, res){
+
+        const {
+            id,
+            marques,
+            modele,
+            annee,
+            puissance,
+            immatriculations
+        } = req.body;
+
+        const vehiculeExist = await models.Vehicule.findOne({where: {id}});
+
+        if (vehiculeExist == null) {
+            req.flash('error', 'User na pas été trouvé dans la base.');
+            return res.redirect('/user');
+        }
+        try {
+
+            await  vehiculeExist.update({
+                marques: marques,
+                modele : modele,
+                annee : annee,
+                puissance: puissance ,
+                immatriculations: immatriculations
+            })
+            await vehiculeExist.save();
+            req.flash('success', 'la modification a bien etait prise en compte.');
+            res.status(201).render(res.redirect('/vehicules'))
+
+        } catch (error) {
+            res.status(400).json({
+                result: "error"
+            })
+        }
+
+
+
+    };
+
 
 
 

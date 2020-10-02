@@ -15,7 +15,6 @@ exports.delete = async function (req, res){
 // Now this entry was removed from the database
 //     try {
     const id = req.params.id
-    console.log(id);
 
     const jane = await models.Trajet.findByPk(id);
     console.log('valeur de jane :',JSON.stringify(jane, null, 2));

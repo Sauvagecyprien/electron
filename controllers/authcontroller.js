@@ -74,6 +74,19 @@ exports.register = async (req, res, next) => {
     }
 }
 
+
+exports.session = (req, res, next) => {
+
+     const username = req.session.nom;
+    console.log(username);
+    return username;
+
+}
+
+
+
+
+
 exports.logout = (req, res, next) => {
     req.session.destroy((err)=> {
         if(err) {

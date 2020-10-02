@@ -110,7 +110,7 @@ function init(callback) {
 
 function loadRoutes(callback) {
 
-    expressApp.get('/', isAuth, usercontroller.list);
+    expressApp.get('/', isAuth, usercontroller.index);
 
     // expressApp.get('/', usercontroller.list);
     expressApp.get('/user', isAuth, usercontroller.list);
@@ -131,10 +131,18 @@ function loadRoutes(callback) {
 
     expressApp.post('/log', authcontroller.login);
     expressApp.get('/logout', authcontroller.logout);
+    expressApp.get('/session', authcontroller.session);
 
-    expressApp.get('/register', function (req, res) {
+    expressApp.post('/updateuser/:id', isAuth, usercontroller.update);
+    expressApp.post('/upuser', isAuth, usercontroller.up);
+    expressApp.post('/updatevehicules/:id', isAuth, vehiculescontroller.update);
+    expressApp.post('/upvehicules', isAuth, vehiculescontroller.up);
+
+
+    expressApp.get('/register', isAuth, function (req, res) {
         res.render('homepage/register', { layout: 'layout-base.ejs' });
     });
+
     expressApp.get('/addentreprise', isAuth, function (req, res) {
         res.render('homepage/addentreprise', { layout: 'layout-base.ejs' });
     });

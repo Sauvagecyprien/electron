@@ -1,0 +1,81 @@
+
+<div class="container  p-5">
+
+    <h1 class="text-center">modification d'un individu </h1>
+    <br/>
+    <div class="card">
+
+        <div class="card-body">
+            <div id="alertmsg" class="w-50 mx-auto my-3">
+                <% if (error_message.length != 0) { %>
+                    <div class="alert alert-danger alert-dismissible fade show my-0 py-1 d-flex" role="alert">
+                        <strong><%= error_message %></strong>
+                        <button type="button" class="close p-0 mr-2" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% } %>
+
+                <% if (success_message.length != 0) { %>
+                    <div class="alert alert-success alert-dismissible fade show my-0 py-1 d-flex" role="alert">
+                        <strong><%= success_message %></strong>
+                        <button type="button" class="close p-0 mr-2" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% } %>
+            </div>
+            <div id="message"><div id="alertmsg" class="w-50 mx-auto my-3">
+                    <% if (error_message.length != 0) { %>
+                        <div class="alert alert-danger alert-dismissible fade show my-0 py-1 d-flex" role="alert">
+                            <strong><%= error_message %></strong>
+                            <button type="button" class="close p-0 mr-2" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <% } %>
+
+                    <% if (success_message.length != 0) { %>
+                        <div class="alert alert-success alert-dismissible fade show my-0 py-1 d-flex" role="alert">
+                            <strong><%= success_message %></strong>
+                            <button type="button" class="close p-0 mr-2" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <% } %>
+                </div></div>
+            <form action="/upuser" method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="exampleInputEmail1" value="<%= user.nom %>" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="exampleInputEmail1" value="<%= user.prenom %>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">entreprise</label>
+                    <input type="text" class="form-control" name="entreprise" id="exampleInputEmail1" value="<%= user.entreprise %>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Adresse email</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= user.email %>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Mot de passe</label>
+                    <input type="password" class="form-control" name="password" id="password" value="<%= user.password %>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">role</label>
+                    <input type="text" class="form-control" name="role" id="role" value="<%= user.role %>">
+                </div>
+                <button type="submit" id="buttons" class="btn btn-dark btn-block">Inscription</button>
+            </form>
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+
