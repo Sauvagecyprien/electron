@@ -27,7 +27,6 @@ console.log(isEqual);
             req.session.isLoggedIn = true;
             req.session.userId = userExist.id;
             req.session.username = userExist.prenom;
-            res.locals.username =req.session.username;
             return req.session.save(err => {
                 res.redirect('/');
             });

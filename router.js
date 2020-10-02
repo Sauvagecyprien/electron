@@ -61,7 +61,39 @@ function start(callback) {
 function init(callback) {
     /* On s'assure que le serveur n'est vraiment pas démarré */
     router.isStarted = false;
- 
+
+
+    /** middleware setup */
+    expressApp.use(
+        session({
+            name: 'default',
+            secret: 'blablacar',
+            resave: false,
+            saveUninitialized: false,
+            cookie: {
+                sameSite: true,
+                maxAge: 3600 * 1000 * 3
+            }
+        })
+    );
+
+    expressApp.set('views', path.join(__dirname, 'views'));
+    expressApp.set('view engine', 'ejs');
+    expressApp.use(express.json());
+    expressApp.use(express.urlencoded({ extended: false }));
+    expressApp.use(express.static(path.join(__dirname, 'public')));
+
+    expressApp.use(flash());
+
+    expressApp.use((req, res, next) => {
+        res.locals.success_message = req.flash('success');
+        res.locals.error_message   = req.flash('error');
+        res.locals.username = req.session.name;
+        next();
+    });
+
+
+
     /* Ajout de express-ejs-layouts */
     expressApp.use(ejsLayout);
  
@@ -138,37 +170,6 @@ function loadRoutes(callback) {
         callback();
     }
 }
-
-
-/** middleware setup */
-expressApp.use(
-    session({
-        name: 'default',
-        secret: 'blablacar',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            sameSite: true,
-            maxAge: 3600 * 1000 * 3
-        }
-    })
-);
-
-expressApp.set('views', path.join(__dirname, 'views'));
-expressApp.set('view engine', 'ejs');
-expressApp.use(express.json());
-expressApp.use(express.urlencoded({ extended: false }));
-expressApp.use(express.static(path.join(__dirname, 'public')));
-
-expressApp.use(flash());
-
-expressApp.use((req, res, next) => {
-    res.locals.success_message = req.flash('success');
-    res.locals.error_message   = req.flash('error');
-    res.locals.username = req.session.name;
-    next();
-});
-
 
  
 module.exports = {
