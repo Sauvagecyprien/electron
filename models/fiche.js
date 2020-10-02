@@ -14,11 +14,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Fiche.init({
-    compteur_start: DataTypes.INTEGER,
-    compteur_end: DataTypes.INTEGER,
-    compteur_distance: DataTypes.INTEGER,
-    total_indemnite: DataTypes.INTEGER,
-    total_km_parcourus: DataTypes.INTEGER
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    compteur_start: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    compteur_end: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    compteur_distance: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    total_indemnite: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    total_km_parcourus: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
   }, {
     sequelize,
     modelName: 'Fiche',

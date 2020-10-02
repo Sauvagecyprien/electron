@@ -14,11 +14,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Vehicule.init({
-    marques: DataTypes.STRING,
-    modele: DataTypes.STRING,
-    puissance: DataTypes.STRING,
-    annee: DataTypes.STRING,
-    immatriculations: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    marques: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    modele: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    puissance: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    annee: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    immatriculations: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
   }, {
     sequelize,
     modelName: 'Vehicule',

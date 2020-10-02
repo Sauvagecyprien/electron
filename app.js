@@ -1,9 +1,10 @@
 var app = {};
+const startingApp = require('./electronSetup');
 
 function start(callback) {
     init(function() {
         /* On démarre le routeur défini juste avant */
-        app.router.start(function() {
+        startingApp.router.start(function() {
             if(typeof callback != 'undefined') {
                 callback();
             }
@@ -13,7 +14,7 @@ function start(callback) {
 
 function init(callback) {
     /* On instancie notre module router */
-    app.router = require('./router');
+    startingApp.router = require('./router');
 
     if(typeof callback != 'undefined') {
         callback();

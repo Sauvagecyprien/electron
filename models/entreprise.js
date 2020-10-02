@@ -14,8 +14,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Entreprise.init({
-    nom_entreprise: DataTypes.STRING,
-    type_entreprise: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    nom_entreprise: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    type_entreprise: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
   }, {
     sequelize,
     modelName: 'Entreprise',

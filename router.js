@@ -60,20 +60,53 @@ function init(callback) {
  
 /* ROUTES */
 var usercontroller = require('./controllers/usercontroller');
+var vehiculescontroller = require('./controllers/vehiculescontroller');
+var trajetcontroller = require('./controllers/trajetcontroller');
+var entreprisecontroller = require('./controllers/entreprisecontroller');
+var fichecontroller = require('./controllers/fichescontroller');
+var authcontroller = require('./controllers/authcontroller');
 const bodyParser = require('body-parser');
+
+// Middleware
+const isAuth = require('./middleware/auth');
+
 expressApp.use(bodyParser.urlencoded({ extended: false }));
 
 function loadRoutes(callback) {
 
     expressApp.get('/', usercontroller.list);
+
+    // expressApp.get('/', usercontroller.list);
+    expressApp.get('/user', usercontroller.list);
+    expressApp.get('/trajet', trajetcontroller.list);
+    expressApp.get('/vehicules', vehiculescontroller.list);
+    expressApp.get('/entreprise', entreprisecontroller.list);
+    expressApp.get('/fiches', fichecontroller.list);
+
     expressApp.post('/createaccount', usercontroller.create);
-    expressApp.post('/delete/:id', usercontroller.delete);
+    expressApp.post('/getaddvoiture', vehiculescontroller.create);
+    expressApp.post('/getaddtrajet', trajetcontroller.create);
+    expressApp.post('/getaddentreprise', entreprisecontroller.create);
+
+    expressApp.post('/deletevehicules/:id', vehiculescontroller.delete);
+    expressApp.post('/deleteuser/:id', usercontroller.delete);
+    expressApp.post('/deletetrajet/:id', trajetcontroller.delete);
+    expressApp.post('/deleteentreprise/:id', entreprisecontroller.delete);
+
 
 
     expressApp.get('/register', function (req, res) {
         res.render('homepage/register', { layout: 'layout-base.ejs' });
     });
-
+    expressApp.get('/addentreprise', function (req, res) {
+        res.render('homepage/addentreprise', { layout: 'layout-base.ejs' });
+    });
+    expressApp.get('/addvoiture', function (req, res) {
+        res.render('homepage/addVoiture', { layout: 'layout-base.ejs' });
+    });
+    expressApp.get('/addtrajet', function (req, res) {
+        res.render('homepage/addtrajet', { layout: 'layout-base.ejs' });
+    });
     expressApp.get('/login', function (req, res) {
         res.render('homepage/login', { layout: 'layout-base.ejs' });
     });

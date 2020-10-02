@@ -1,0 +1,53 @@
+
+<div class="container  p-5">
+
+
+    <h1 class="text-center">Affichage des véhicules</h1>
+    <br/>
+    <div class="card">
+
+        <div class="card-body">
+            <ul class="nav justify-content-center">
+
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">resultat du echo des donnée vehicules</a>
+                </li>
+
+            </ul>
+            <table class="table table-striped table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#id</th>
+                    <th scope="col">marque</th>
+                    <th scope="col">modele</th>
+                    <th scope="col">annee</th>
+                    <th scope="col">Puissance</th>
+                    <th scope="col">immatriculation</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <% for(var i=0; i<test.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%= test[i].id %></th>
+                        <td><%= test[i].marques %></td>
+                        <td><%= test[i].modele %></td>
+                        <td><%= test[i].annee %></td>
+                        <td><%= test[i].puissance %></td>
+                        <td><%= test[i].immatriculations %></td>
+                        <td><form action="/deletevehicules/<%= test[i].id %>" method="post"><button type="submit" class="btn btn-dark btn-block">supprimer</button></form></td>
+                    </tr>
+                <% } %>
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>

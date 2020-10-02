@@ -14,13 +14,42 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Trajet.init({
-
-    id_vehicules: DataTypes.INTEGER,
-    date: DataTypes.DATE,
-    trajet_start: DataTypes.STRING,
-    trajet_end: DataTypes.STRING,
-    commentaire: DataTypes.STRING,
-    type_deplacement: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    id_vehicules: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      unique: true
+    },
+    trajet_start: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    trajet_end: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    commentaire: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    type_deplacement: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
   }, {
     sequelize,
     modelName: 'Trajet',

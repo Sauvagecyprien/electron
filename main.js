@@ -4,11 +4,12 @@ const app = require('./app');
 let window;
 
 function createWindow() {
-    /* Créer une fenêtre de 800px par 600px sans bordures */
+    /* Créer une fenêtre de 800px par 600px sans bordures false */
+    /* Créer une fenêtre de full screen avec bordure 1920 1080 true */
     window = new electron.BrowserWindow({
-        width: 800,
-        height: 600,
-        frame: false
+        width: 1920,
+        height: 1080,
+        frame: true
     });
 
     /* Si vous décommentez cette ligne, vous verrez la console de débug Chrome */

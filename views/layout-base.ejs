@@ -11,7 +11,68 @@
 
 
   </head>
-  <body>
+  <body class="body">
+  <!-- Image and text -->
+  <nav class="navbar navbar-dark bg-dark navbars">
+    <a class="navbar-brand" href="/">
+      <img src="/images/electron.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      electronJS
+    </a>
+
+    <ul class="nav justify-content-end">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Affichage
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/vehicules">Afficher les véhicules</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/user">Afficher les utilisateurs</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/trajet">Afficher les trajets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/entreprise">Afficher les entreprises</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/fiches">Afficher les fiches</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Création
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/addVoiture">Créer un véhicule</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/register">Créer un utilisateur</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/addtrajet">Créer un trajet</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/addentreprise">Créer une entreprise</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/addfiches">Créer une fiche</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Modification
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="">Modification d'un véhicule</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">Modification d'un utilisateur</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Modification d'un trajet</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Modification d'une entreprise</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Modification d'une fiche</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Se connecter</a>
+      </li>
+    </ul>
+  </nav>
     <%- body %>
 
     <!-- You can also require other files to run in this process -->

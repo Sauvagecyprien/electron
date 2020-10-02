@@ -1,13 +1,11 @@
 var models = require('../models');
-
-
+const bcrypt = require('bcryptjs');
+require('../electronSetup');
 
 exports.list = async function (req, res){
     const entites = await models.User.findAll();
-
-    console.log("All users:", JSON.stringify(entites, null, 2));
 var test = entites;
-    res.render('homepage/index', { layout: 'layout-base.ejs', test : test });
+    res.render('homepage/user', { layout: 'layout-base.ejs', test : test });
 }
 
 exports.delete = async function (req, res){
@@ -28,7 +26,7 @@ exports.delete = async function (req, res){
     // }
 
 
-}
+};
 
 exports.create = async function (req, res){
 
@@ -38,14 +36,27 @@ exports.create = async function (req, res){
         entreprise,
         email,
         password
-    } = req.body
+    } = req.body;
+
+    const userExist = await models.User.findOne({where: {email}});
+    console.log(userExist);
+
+        if (userExist != null) {
+            return res.redirect('/register');
+        }
+
+
+
+
+    const hashedPwd = await bcrypt.hash(password, 12);
     try {
         const user = await models.User.create({
             nom,
             prenom,
             entreprise,
             email,
-            password
+            password: hashedPwd,
+            role: 'user'
         })
         res.status(201).render(res.redirect('/'))
 
@@ -57,11 +68,8 @@ exports.create = async function (req, res){
 
 
 
+};
 
-    // const entites = await models.User.create({nom: req.body.nom, prenom : req.body.prenom, entreprise : req.body.entreprise, email : req.body.email, password : req.body.password});
-
-    res.render('homepage/index', { layout: 'layout-base.ejs', test : test });
-}
 
 
 
