@@ -7,7 +7,7 @@ exports.list = async function (req, res){
 
     console.log("All users:", JSON.stringify(entites, null, 2));
     var test = entites;
-    res.render('homepage/vehicules', { layout: 'layout-base.ejs', test : test });
+    res.render('homepage/vehicules', { layout: 'layout-template.ejs', test : test, active : 'vehicules' });
 }
 
 exports.delete = async function (req, res){
@@ -56,12 +56,10 @@ exports.create = async function (req, res) {
 }
 
 exports.update = async function (req, res){
-
-// Now this entry was removed from the database
         try {
             const id = req.params.id
             const vehicules = await models.Vehicule.findByPk(id);
-            res.render('homepage/updatevehicules', { layout: 'layout-base.ejs', vehicules : vehicules });
+            res.render('homepage/updatevehicules', { layout: 'layout-template.ejs', vehicules : vehicules, active : '' });
         } catch (error) {
             req.flash('error', 'Une erreur est survenue');
             return res.redirect('/user');

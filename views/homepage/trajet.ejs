@@ -16,8 +16,9 @@
                 </li>
 
             </ul>
-            <table class="table table-striped table-dark">
-                <thead>
+            <div class="card-body table-full-width table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
                 <tr>
                     <th scope="col">#id</th>
                     <th scope="col">id_vehicules</th>
@@ -39,14 +40,16 @@
                         <td><%= test[i].trajet_end %></td>
                         <td><%= test[i].commentaire %></td>
                         <td><%= test[i].type_deplacement %></td>
-                        <td><form action="/deletetrajet/<%= test[i].id %>" method="post"><button type="submit" class="btn btn-dark btn-block">supprimer</button></form></td>
+                        <td><form action="/updatetrajet/<%= test[i].id %>" method="post"><button type="submit" rel="tooltip" title="Modifier" class="btn btn-info btn-simple btn-link"><i class="fa fa-edit"></i> </button></form></td>
+                        <td><form action="/deletetrajet/<%= test[i].id %>" method="post"><button type="submit" rel="tooltip" title="Supprimer" class="btn btn-danger btn-simple btn-link"><i class="fa fa-times"></i></button></form></td>
+
                     </tr>
                 <% } %>
 
 
                 </tbody>
             </table>
-
+            </div>
         </div>
 
 

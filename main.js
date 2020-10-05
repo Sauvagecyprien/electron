@@ -9,8 +9,11 @@ function createWindow() {
     window = new electron.BrowserWindow({
         width: 1920,
         height: 1080,
-        frame: true
-    });
+        frame: true,
+        webPreferences: {
+            nodeIntegration: false
+        }
+    },);
 
     /* Si vous décommentez cette ligne, vous verrez la console de débug Chrome */
     /* window.webContents.openDevTools(); */

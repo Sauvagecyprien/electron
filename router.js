@@ -6,7 +6,8 @@ const flash = require('connect-flash');
 const path = require('path');
 const sqlite3 = require("sqlite3").verbose();
 const session = require('express-session');
-
+const chartist = require('chartist');
+const $ = require('jquery');
 
 // Get all models
 const Entreprise = require('./models/entreprise');
@@ -63,7 +64,6 @@ function init(callback) {
     /* On s'assure que le serveur n'est vraiment pas démarré */
     router.isStarted = false;
 
-
     /** middleware setup */
     expressApp.use(
         session({
@@ -75,7 +75,7 @@ function init(callback) {
                 sameSite: true,
                 maxAge: 3600 * 1000 * 3
             }
-        })
+        }),
     );
 
     expressApp.set('views', path.join(__dirname, 'views'));
@@ -89,7 +89,7 @@ function init(callback) {
     expressApp.use((req, res, next) => {
         res.locals.success_message = req.flash('success');
         res.locals.error_message = req.flash('error');
-        res.locals.username = req.session.name;
+        res.locals.active_message = req.flash('active');
         next();
     });
 
@@ -129,31 +129,43 @@ function loadRoutes(callback) {
     expressApp.post('/deletetrajet/:id', isAuth, trajetcontroller.delete);
     expressApp.post('/deleteentreprise/:id', isAuth, entreprisecontroller.delete);
 
-    expressApp.post('/log', authcontroller.login);
-    expressApp.get('/logout', authcontroller.logout);
-    expressApp.get('/session', authcontroller.session);
-
     expressApp.post('/updateuser/:id', isAuth, usercontroller.update);
     expressApp.post('/upuser', isAuth, usercontroller.up);
     expressApp.post('/updatevehicules/:id', isAuth, vehiculescontroller.update);
     expressApp.post('/upvehicules', isAuth, vehiculescontroller.up);
 
+    expressApp.post('/log', authcontroller.login);
+    expressApp.get('/logout', authcontroller.logout);
+
+
 
     expressApp.get('/register', isAuth, function (req, res) {
-        res.render('homepage/register', { layout: 'layout-base.ejs' });
+        res.render('homepage/register', { layout: 'layout-template.ejs', active: '' });
     });
 
     expressApp.get('/addentreprise', isAuth, function (req, res) {
-        res.render('homepage/addentreprise', { layout: 'layout-base.ejs' });
+        res.render('homepage/addentreprise', { layout: 'layout-template.ejs' ,active: '' });
     });
     expressApp.get('/addvoiture', isAuth, function (req, res) {
-        res.render('homepage/addVoiture', { layout: 'layout-base.ejs' });
+        res.render('homepage/addVoiture', { layout: 'layout-template.ejs',active: '' });
     });
     expressApp.get('/addtrajet', isAuth,function (req, res) {
-        res.render('homepage/addtrajet', { layout: 'layout-base.ejs' });
+        res.render('homepage/addtrajet', { layout: 'layout-template.ejs',active: '' });
     });
     expressApp.get('/login', function (req, res) {
-        res.render('homepage/login', { layout: null });
+        res.render('homepage/login', { layout: 'layout-template.ejs',active: '' });
+    });
+    expressApp.get('/test', function (req, res) {
+        res.render('examples/dashboard', { layout: 'layout-template.ejs',active: '' });
+    });
+    expressApp.get('/test1', function (req, res) {
+        res.render('examples/template', { layout: 'layout-template.ejs',active: '' });
+    });
+    expressApp.get('/notif', function (req, res) {
+        res.render('examples/notifications', { layout: 'layout-template.ejs',active: '' }, );
+    });
+    expressApp.get('/icon', function (req, res) {
+        res.render('examples/icons', { layout: 'layout-template.ejs',active: '' }, );
     });
 
     if (typeof callback != 'undefined') {

@@ -5,7 +5,7 @@ require('../electronSetup');
 exports.list = async function (req, res){
     const entites = await models.User.findAll();
 var test = entites;
-    res.render('homepage/user', { layout: 'layout-base.ejs', test : test });
+    res.render('homepage/user', { layout: 'layout-template.ejs', test : test, active : 'user' });
 }
 
 exports.delete = async function (req, res){
@@ -17,6 +17,7 @@ exports.delete = async function (req, res){
 
         const jane = await models.User.findByPk(id);
         await jane.destroy();
+        req.flash('success', 'La modification à bien été prise en compte.');
         res.status(200).render(res.redirect('/user'))
     } catch (error) {
         res.status(400).json({
@@ -35,7 +36,7 @@ exports.update = async function (req, res){
     try {
         const id = req.params.id
         const user = await models.User.findByPk(id);
-        res.render('homepage/updateuser', { layout: 'layout-base.ejs', user : user });
+        res.render('homepage/updateuser', { layout: 'layout-template.ejs', user : user, active: 'te' });
     } catch (error) {
         req.flash('error', 'Une erreur est survenue');
         return res.redirect('/user');
@@ -90,8 +91,7 @@ exports.up = async function (req, res){
 
 
 exports.index = async function (req, res){
-
-   res.render('homepage/index', { layout: 'layout-base.ejs' });
+   res.render('homepage/index', { layout: 'layout-template.ejs', active : 'dash'});
 
 
 };
@@ -126,7 +126,7 @@ exports.create = async function (req, res){
             password: hashedPwd,
             role: 'user'
         })
-        res.status(201).render(res.redirect('/'))
+        res.status(201).render(res.redirect('/user'))
 
     } catch (error) {
         res.status(400).json({

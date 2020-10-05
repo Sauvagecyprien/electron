@@ -28,7 +28,7 @@ console.log(isEqual);
             req.session.userId = userExist.id;
             req.session.username = userExist.prenom;
             return req.session.save(err => {
-                res.locals.username = req.session.name;
+                req.flash('success', 'Bienvenue vous êtes à present connecté');
                 res.redirect('/');
             });
         };

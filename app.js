@@ -16,6 +16,7 @@ function init(callback) {
     /* On instancie notre module router */
     startingApp.router = require('./router');
 
+
     if(typeof callback != 'undefined') {
         callback();
     }

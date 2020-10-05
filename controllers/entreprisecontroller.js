@@ -7,7 +7,7 @@ exports.list = async function (req, res){
 
     console.log("All users:", JSON.stringify(entites, null, 2));
     var test = entites;
-    res.render('homepage/entreprise', { layout: 'layout-base.ejs', test : test });
+    res.render('homepage/entreprise', { layout: 'layout-template.ejs', test : test, active: 'entreprise' });
 }
 
 exports.delete = async function (req, res){
