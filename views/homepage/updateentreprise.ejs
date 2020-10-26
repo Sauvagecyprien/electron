@@ -1,0 +1,41 @@
+<%- include('../includes/layout-update') -%>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="section">
+
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="text-center">modification d'une entreprise </h1>
+                            <br/>
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <form action="/upentreprise" method="post">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Nom : </label>
+                                            <input type="hidden" name="id" value="<%= entreprise.id %>">
+                                            <input type="text" class="form-control" name="nom_entreprise" id="exampleInputEmail1" value="<%= entreprise.nom_entreprise %>">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Type : </label>
+                                            <input type="text" class="form-control" name="type_entreprise" id="exampleInputEmail1" value="<%= entreprise.type_entreprise %>">
+                                        </div>
+
+                                        <button type="submit" id="buttons" class="btn btn-dark btn-block">Modifier</button>
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div></div></div></div></div>
+
+<%- include('../includes/footer-update') -%>

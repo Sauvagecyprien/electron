@@ -24,7 +24,6 @@
     "electromon": "^1.0.10",
     "electron-controllers": "^1.1.2",
     "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "fs": "0.0.1-security",

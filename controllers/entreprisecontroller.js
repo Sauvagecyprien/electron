@@ -46,9 +46,59 @@ exports.create = async function (req, res){
         })
     }
 
-
-
 }
+
+
+    exports.update = async function (req, res){
+
+// Now this entry was removed from the database
+        try {
+            const id = req.params.id
+            const entreprise = await models.Entreprise.findByPk(id);
+            res.render('homepage/updateentreprise', { entreprise : entreprise, active: 'te' });
+        } catch (error) {
+            req.flash('error', 'Une erreur est survenue');
+            return res.redirect('/entreprise');
+        }
+
+
+    };
+
+    exports.up = async function (req, res){
+
+        const {
+            id,
+            nom_entreprise,
+            type_entreprise,
+        } = req.body;
+
+        const Entreprise = await models.Entreprise.findOne({where: {id}});
+
+        if (Entreprise == null) {
+            req.flash('error', 'L\'ntreprise non trouvé dans la base.');
+            return res.redirect('/user');
+        }
+        try {
+
+            await  Entreprise.update({
+                nom_entreprise : nom_entreprise,
+                type_entreprise : type_entreprise
+            })
+            await Entreprise.save();
+            req.flash('success', 'La modification de l\'entreprise bien était prise en compte.');
+            res.status(201).render(res.redirect('/entreprise'))
+
+        } catch (error) {
+            res.status(400).json({
+                result: "error"
+            })
+        }
+
+
+
+    };
+
+
 
 
 

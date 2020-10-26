@@ -1,22 +1,42 @@
+<%- include('../includes/layout-template') -%>
 
-<div class="container  p-5">
+<div class="content">
+    <div class="container-fluid">
+        <div class="section">
 
+            <div class="card">
+                <div id="message">
+                    <div id="alertmsg" class="w-50 mx-auto my-3">
+                        <% if (error_message.length != 0) { %>
+                            <div class="alert alert-danger">
+                                <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                                    <i class="nc-icon nc-simple-remove"></i>
+                                </button>
+                                <span>
+                            <b> Error- </b><%= error_message %></span>
+                            </div>
 
-    <h1 class="text-center">Affichage des véhicules</h1>
-    <br/>
-    <div class="card">
+                        <% } %>
 
-        <div class="card-body">
-            <ul class="nav justify-content-center">
+                        <% if (success_message.length != 0) { %>
+                            <div class="alert alert-warning" style="border-radius: 5px">
+                                <button type="button" aria-hidden="true" class="close" data-dismiss="alert">
+                                    <i class="nc-icon nc-simple-remove"></i>
+                                </button>
+                                <span>
+                                    <b> Success - </b> <%= success_message %></span>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="card-header">
 
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">resultat du echo des donnée vehicules</a>
-                </li>
-
-            </ul>
-            <div class="card-body table-full-width table-responsive">
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="/addtrajet" class="btn btn-info btn-fill">Créer un trajet</a>
+                            <div class="card-body table-full-width table-responsive">
                 <table class="table table-hover table-striped">
                     <thead>
                 <tr>
@@ -55,4 +75,5 @@
 
     </div>
 
-</div>
+                </div></div></div></div></div>
+<%- include('../includes/footer') -%>

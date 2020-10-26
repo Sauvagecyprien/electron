@@ -36,7 +36,7 @@ exports.update = async function (req, res){
     try {
         const id = req.params.id
         const user = await models.User.findByPk(id);
-        res.render('homepage/updateuser', { layout: 'layout-template.ejs', user : user, active: 'te' });
+        res.render('homepage/updateuser', { user : user, active: 'te' });
     } catch (error) {
         req.flash('error', 'Une erreur est survenue');
         return res.redirect('/user');

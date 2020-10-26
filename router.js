@@ -31,7 +31,7 @@ const isAuth = require('./middleware/auth');
 
 
 /* Ajout de express-ejs-layouts */
-const ejsLayout = require('express-ejs-layouts');
+
 
 /* Initialisation des variables */
 const router = {
@@ -95,9 +95,6 @@ function init(callback) {
 
 
 
-    /* Ajout de express-ejs-layouts */
-    expressApp.use(ejsLayout);
-
 
 
     if (typeof callback != 'undefined') {
@@ -130,13 +127,16 @@ function loadRoutes(callback) {
     expressApp.post('/deleteentreprise/:id', isAuth, entreprisecontroller.delete);
 
     expressApp.post('/updateuser/:id', isAuth, usercontroller.update);
+    expressApp.post('/updateentreprise/:id', isAuth, entreprisecontroller.update);
+    expressApp.post('/updatetrajet/:id', isAuth, trajetcontroller.update);
+    expressApp.post('/upentreprise', isAuth, entreprisecontroller.up);
     expressApp.post('/upuser', isAuth, usercontroller.up);
+    expressApp.post('/uptrajet', isAuth, trajetcontroller.up);
     expressApp.post('/updatevehicules/:id', isAuth, vehiculescontroller.update);
     expressApp.post('/upvehicules', isAuth, vehiculescontroller.up);
 
     expressApp.post('/log', authcontroller.login);
     expressApp.get('/logout', authcontroller.logout);
-
 
 
     expressApp.get('/register', isAuth, function (req, res) {
